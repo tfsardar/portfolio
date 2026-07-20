@@ -21,8 +21,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Noah — Web Developer",
-  description: "Portfolio of Noah, a web developer building fast, clean, reliable products.",
+  title: "UmairAli-Portfolio",
+  description: "Portfolio of Umair, a web developer building fast, clean, reliable products.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
