@@ -1,12 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Download, Menu, X, FileText } from "lucide-react";
 import { nav, profile } from "@/lib/content";
+import useNavbarAnimation from "@/app/hooks/useNavbarAnimation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#home");
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+
+  useNavbarAnimation({ open, active, mobileMenuRef });
 
   useEffect(() => {
     const sections = nav.map((n) => document.querySelector(n.href)).filter(Boolean) as HTMLElement[];
@@ -64,29 +68,35 @@ export default function Navbar() {
         </button>
       </div>
 
-      {open && (
-        <div className="md:hidden max-w-6xl mx-auto mt-3 bg-panel border border-line rounded-2xl px-5 py-5">
-          <ul className="flex flex-col gap-4 text-sm">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <a href={item.href} onClick={() => setOpen(false)} className="text-muted hover:text-paper">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <a
-            href={profile.resumeUrl}
-            download
-            className="mt-5 inline-flex items-center gap-2 border border-line rounded-full pl-4 pr-1.5 py-1.5 text-[13px]"
-          >
-            Download Resume
-            <span className="w-7 h-7 rounded-full bg-panel2 flex items-center justify-center">
-              <Download size={13} />
-            </span>
-          </a>
-        </div>
-      )}
+      {/* Mobile Menu - always rendered, animated via hook */}
+      <div className="md:hidden max-w-6xl mx-auto mt-3 bg-panel border border-line rounded-2xl px-5 py-5"
+           ref={mobileMenuRef}
+           style={{
+             height: 0,
+             opacity: 0,
+             overflow: 'hidden'
+           }}
+      >
+        <ul className="flex flex-col gap-4 text-sm">
+          {nav.map((item) => (
+            <li key={item.href}>
+              <a href={item.href} onClick={() => setOpen(false)} className="text-muted hover:text-paper">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a
+          href={profile.resumeUrl}
+          download
+          className="mt-5 inline-flex items-center gap-2 border border-line rounded-full pl-4 pr-1.5 py-1.5 text-[13px]"
+        >
+          Download Resume
+          <span className="w-7 h-7 rounded-full bg-panel2 flex items-center justify-center">
+            <Download size={13} />
+          </span>
+        </a>
+      </div>
     </header>
   );
 }

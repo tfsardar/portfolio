@@ -1,5 +1,7 @@
-import { Mail, Github, Linkedin, Phone } from "lucide-react";
+ "use client";
+ import { Mail, Github, Linkedin, Phone } from "lucide-react";
 import { profile } from "@/lib/content";
+import useConnectAnimation from "@/app/hooks/useConnectAnimation";
 
 const socials = [
   { icon: Github, label: "GitHub", href: profile.github },
@@ -7,6 +9,8 @@ const socials = [
 ];
 
 export default function Connect() {
+  useConnectAnimation();
+
   return (
     <section id="connect" className="relative py-28 border-t border-line overflow-hidden">
       <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-ember-glow pointer-events-none" />

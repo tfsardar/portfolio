@@ -53,3 +53,26 @@ body {
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 90%);
   mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 90%);
 }
+@media (pointer: coarse){
+
+body{
+
+cursor:auto;
+
+}
+
+}
+.skill-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.skill-card * {
+  transform: translateZ(20px);
+}
+
+.skill-card:hover {
+  box-shadow:
+    0 20px 60px rgba(255, 106, 43, 0.18),
+    0 0 40px rgba(255, 106, 43, 0.08);
+}

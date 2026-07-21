@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const display = Space_Grotesk({
@@ -21,7 +22,7 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Noah — Web Developer",
+  title: "Umair-Portfolio",
   description: "Portfolio of Noah, a web developer building fast, clean, reliable products.",
 };
 
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${display.variable} ${body.variable} ${mono.variable} font-body bg-void text-paper antialiased`}>
         {children}
+        <SmoothScroll />
       </body>
     </html>
   );

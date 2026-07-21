@@ -1,6 +1,10 @@
+"use client";
 import { experience, education } from "@/lib/content";
+import useExperienceAnimation from "@/app/hooks/useExperienceAnimation";
 
 export default function Experience() {
+  useExperienceAnimation();
+
   return (
     <section id="experience" className="relative py-24 border-t border-line">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">

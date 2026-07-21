@@ -1,7 +1,11 @@
+"use client";
 import { projects } from "@/lib/content";
 import ProjectCard from "./ProjectCard";
+import useProjectsAnimation from "@/app/hooks/useProjectsAnimation";
 
 export default function Projects() {
+  useProjectsAnimation();
+
   return (
     <section id="projects" className="relative py-24 border-t border-line">
       <div className="max-w-6xl mx-auto px-5 sm:px-8">
